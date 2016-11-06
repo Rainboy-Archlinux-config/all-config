@@ -14,3 +14,9 @@ sudo apt-get install pip
 
 设置pip国内 镜像
 
+```
+[global]
+index-url = http://pypi.douban.com/simple
+[install]
+trusted-host= pypi.douban.com
+```
