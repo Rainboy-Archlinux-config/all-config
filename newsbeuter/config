@@ -1,0 +1,19 @@
+always-display-description true
+article-sort-order date-asc
+auto-reload no
+reload-threads 4
+
+# 默认的browser
+browser "google-chrome-stable %u"
+
+confirm-exit no
+#articlelist-format "%4i %f %D %?T?;%-17T; ?%t"
+datetime-format "%F, %R"
+cookie-cache "~/.newsbeuter/cookies.txt"
+error-log "~/.newsbeuter/error.log"
+
+
+oldreader-flag-share "oa"
+oldreader-flag-star "ob"
+feedhq-flag-share "ha"
+feedhq-flag-star "hb"
