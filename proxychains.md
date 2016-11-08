@@ -1,45 +1,23 @@
-First, set up shadowsocks as usual. Suppose your local is running on 127.0.0.1:1080.
-
-Install proxychains.
-
-On Debian/Ubuntu:
+proxychains安装
 
 ```
-apt-get install proxychains
+git clone https://github.com/rofl0r/proxychains-ng.git
+cd proxychains-ng
+./configure
+make && make install
+cp ./src/proxychains.conf /etc/proxychians.conf
+cd .. && rm -rf proxychains-ng
 ```
-
-On Mac OS X:
-
-```
-brew install proxychains-ng
-```
-
-Make a config file at ~/.proxychains/proxychains.conf with content:
+编辑proxychains配置
 
 ```
-strict_chain
-proxy_dns 
-remote_dns_subnet 224
-tcp_read_time_out 15000
-tcp_connect_time_out 8000
-localnet 127.0.0.0/255.0.0.0
-quiet_mode
-
-[ProxyList]
-socks5  127.0.0.1 1080
+vim /etc/proxychains.conf
+将socks4 127.0.0.1 9095改为
 ```
 
-Then run command with proxychains. Examples:
+socks5  127.0.0.1 1080  //1080改为你自己的端口
+使用方法
 
-```
-proxychains4 curl https://www.twitter.com/
-proxychains4 git push origin master
-```
+在需要代理的命令前加上 proxychains4 ，如：
 
-Or just proxify bash:
-
-```
-proxychains4 bash
-curl https://www.twitter.com/
-git push origin master
-```
+proxychains4 wget http://xxx.com/xxx.zip
