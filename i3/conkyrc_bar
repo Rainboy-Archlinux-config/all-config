@@ -1,0 +1,44 @@
+-- ===================================================================
+--                            conky_bar
+-- Date    : 2018-08-10 18:01
+-- Author  : rainboy
+-- Version : v2
+--
+-- 这份配置文件适用于conky1.10之后版本
+-- conky1.10之后配置文档采用lua语法
+-- ===================================================================
+
+conky.config = {
+
+    -- 不输出到X
+    out_to_x = false,
+    out_to_console = true,
+    background = false,
+    double_buffer = false,
+    -- 刷新时间
+    update_interval = 1,
+    -- 运行时间，0为一直运行
+    total_run_times = 0,
+    -- 强制uft8编码，需xft支持
+    override_utf8_locale = false,
+    -- 缩写字符单位
+    short_units = true,
+    -- 监视端口
+    if_up_strictness = 'address',
+    -- cpu数据监测模式，一般选2
+    cpu_avg_samples = 2
+
+}
+
+conky.text = [[
+ ${upspeed wlp2s0}/s  ${downspeed wlp2s0}/s \
+ ${cpu cpu0}% \
+| ${if_up wlp2s0} ${addr wlp2s0}- qual ${wireless_link_qual_perc wlp2s0}% ${hr 2}\
+Essid ${wireless_essid wlp2s0} | \
+ ${totaldown wlp2s0}  ${totalup wlp2s0}$endif |\
+ ${mem} |\
+ /${fs_used /} |\
+ /home ${fs_used /home} |\
+ ${battery_percent}% \
+ ${time %H:%M}
+]]
